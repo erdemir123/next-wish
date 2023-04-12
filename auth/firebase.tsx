@@ -13,26 +13,24 @@ import {
 import { NextRouter } from "next/router";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCgMikTWx6qVwtKQm69cZClHhH4gdY1LUU",
-  authDomain: "wish-6b628.firebaseapp.com",
-  projectId: "wish-6b628",
-  storageBucket: "wish-6b628.appspot.com",
-  messagingSenderId: "946824748988",
-  appId: "1:946824748988:web:6d99fda51dbffef40755b9",
+  apiKey: "AIzaSyAQSEH-NTi4nLUeVRfLhkr4jFVFV2zndYw",
+  authDomain: "wish-20d4a.firebaseapp.com",
+  projectId: "wish-20d4a",
+  storageBucket: "wish-20d4a.appspot.com",
+  messagingSenderId: "195414482221",
+  appId: "1:195414482221:web:cc8725a48f504c479587a4",
 };
 // Firebase'i başlatma
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const data = initializeApp(firebaseConfig);
+export default data;
+const auth = getAuth(data);
 
 export const logOut = (dispatch: Dispatch<AnyAction>, router: NextRouter) => {
   signOut(auth);
   dispatch(clearUser());
-  router.push("/")
+  router.push("/");
 };
-export const userObserver = (
-  dispatch: Dispatch<AnyAction>,
-  
-) => {
+export const userObserver = (dispatch: Dispatch<AnyAction>) => {
   //? Kullanıcının signin olup olmadığını takip eden ve kullanıcı değiştiğinde yeni kullanıcıyı response olarak dönen firebase metodu
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -46,7 +44,6 @@ export const userObserver = (
       );
     } else {
       dispatch(clearUser());
-     
     }
   });
 };

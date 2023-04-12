@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import github from "@/public/github.png";
 import chrome from "@/public/chrome.png";
 import Image from "next/image";
+import ProtectedRoute from "@/component/ProtectedRoute";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -23,13 +24,13 @@ export default function Home() {
     <div className="flex justify-center items-center flex-col gap-8 h-[100vh]">
       <Button
         text={"Sign in With Google"}
-        icon={<Image src={chrome} alt="Google Icon" width={50} height={50}/>}
+        icon={<Image src={chrome} alt="Google Icon" width={50} height={50} />}
         name={"google"}
         func={googleProvider}
       />
       <Button
-        text={"Sign in With Google"}
-        icon={<Image src={github} alt="Google Icon" width={50} height={50}/>}
+        text={"Sign in With GitHub"}
+        icon={<Image src={github} alt="Google Icon" width={50} height={50} />}
         name={"google"}
         func={gitProvider}
       />
