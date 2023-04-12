@@ -19,17 +19,17 @@ export default function Home() {
   console.log(wishList);
   console.log(isLoading);
   const handleSubmit = () => {
-    console.log("çalıştı")
+    console.log("çalıştı");
     AddWish(wish);
   };
   return (
     <ProtectedRoute>
       <div className="w-100 h-[100vh] bg-slate-800">
-        <div className="flex justify-end pr-4 py-2 bg-slate-400 w-100 gap-2">
+        <div className="flex justify-between px-4 py-2 bg-slate-400 w-100 gap-2">
           <div className="flex items-center gap-3 ">
             <img src={user.photo} alt="" className="rounded-[50%] w-8 " />
             <p className="font-bold text-slate-600 ">{user.username}</p>
-            {user.email !== "null" && <p>{user.email}</p>}
+            
           </div>
           <button
             className="bg-amber-200  py-2 px-2  rounded-lg  text-lg font-bold capitalize text-slate-600"
@@ -56,11 +56,22 @@ export default function Home() {
           <button
             className="bg-amber-200  py-2 px-2  rounded-lg  text-lg font-bold capitalize text-slate-600 w-32 mx-auto"
             onClick={() => {
-              handleSubmit()
+              handleSubmit();
             }}
           >
             SEND
           </button>
+        </div>
+        <div className="mt-4 flex flex-col justify-center items-center">
+          <h1 className="text-transparent bg-clip-text bg-gradient-to-br from-amber-900 via-slate-100 text-2xl font-bold uppercase ">
+            Wishes
+          </h1>
+          <hr className="border-2 w-[100vw]"/>
+          {wishList.map((item: any) => (
+            <h2 className="text-transparent bg-clip-text bg-gradient-to-br from-amber-900 via-slate-100 text-2xl font-bold uppercase text-center">
+              {item.wish}
+            </h2>
+          ))}
         </div>
       </div>
     </ProtectedRoute>
