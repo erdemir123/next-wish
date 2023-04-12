@@ -3,8 +3,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import { store } from "@/app/store";
-import { userObserver } from "@/auth/firebase";
-import { useAppDispatch } from "@/app/hooks";
+import Util from "@/component/Util";
 
 interface Imetadata {
   title: string;
@@ -16,14 +15,15 @@ export const metadata: Imetadata = {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
-  
   return (
     <Provider store={store}>
       <Head>
         <title>{metadata.title}</title>
         <link rel="shortcut icon" href="vercel.svg" type="image/x-icon" />
       </Head>
-      <Component {...pageProps} />
+      <Util>
+        <Component {...pageProps} />
+      </Util>
     </Provider>
   );
 }
